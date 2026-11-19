@@ -1,0 +1,709 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Virada 5x2 | Monte a nova escala</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Monte, passo a passo, a nova escala 5x2 da sua empresa: como é hoje e como pode ficar.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#2E1065;--blue:#6D28D9;--orange:#7C3AED;--bg:#F7F4FF;--line:#E3DAF7;--ink:#1E1B3A;--muted:#5B5675;--soft:#EDE7FF}
+*{box-sizing:border-box}
+body{font:16px/1.5 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;margin:0;background:var(--bg);color:var(--ink)}
+button,input,select{font:inherit}
+button{cursor:pointer}
+a{color:var(--blue)}
+.top{background:#fff;border-bottom:1px solid var(--line)}
+.topin{max-width:1040px;margin:auto;padding:10px 16px;display:flex;align-items:center;gap:14px}
+.logo{width:64px;height:52px;object-fit:contain}
+.brand strong{display:block;font-size:22px;line-height:1.15;color:#2E1065}
+.brand span{font-size:14px;color:var(--muted)}
+.logo{display:grid;place-items:center}
+.logo svg{width:100%;height:100%}
+main{max-width:1040px;margin:auto;padding:16px 16px 40px}
+.progress{display:flex;align-items:center;gap:12px;margin:4px 0 14px}
+.bar{flex:1;height:10px;background:#E4DCF8;border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;background:#FFD400;border-radius:99px;transition:width .3s}
+.progress span{font-size:14px;font-weight:700;color:#5B21B6;white-space:nowrap}
+.lia{display:flex;gap:22px;align-items:center;margin:4px 0 18px}
+.lia .guia{width:84px;height:84px;flex:none;border-radius:50%;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:38px;box-shadow:0 6px 14px rgba(46,16,101,.22);animation:liaIn .6s cubic-bezier(.34,1.56,.64,1) both}
+.lia .guia svg{width:46px;height:46px}
+.lia .bubble{animation:bubIn .45s ease-out .15s both}
+@keyframes liaIn{0%{opacity:0;transform:translateY(24px) scale(.85) rotate(-4deg)}100%{opacity:1;transform:none}}
+@keyframes liaFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes bubIn{0%{opacity:0;transform:translateX(-14px) scale(.97)}100%{opacity:1;transform:none}}
+.lia.still .guia,.lia.still .bubble{animation:none}
+@media (prefers-reduced-motion:reduce){.lia .guia,.lia .bubble{animation:none}}
+.bubble{position:relative;flex:1;background:#fff;border:2px solid var(--orange);border-radius:18px;padding:18px 22px;font-size:18.5px;line-height:1.5;box-shadow:0 8px 22px rgba(124,58,237,.16)}
+.bubble::before{content:"";position:absolute;left:-13px;top:50%;margin-top:-12px;border:12px solid transparent;border-left:0;border-right:13px solid var(--orange)}
+.bubble::after{content:"";position:absolute;left:-10px;top:50%;margin-top:-10px;border:10px solid transparent;border-left:0;border-right:11px solid #fff}
+.bubble .who{display:block;font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin-bottom:4px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:14px}
+h1,h2,.brand strong{font-family:Poppins,system-ui,sans-serif}
+h1{font-size:25px;line-height:1.2;margin:0 0 8px;color:#2E1065}
+h2{font-size:19px;margin:0 0 10px;color:#2E1065}
+h3{font-size:16px;margin:16px 0 8px;color:#2E1065}
+.muted{color:var(--muted)}
+.small{font-size:14px}
+.tip{background:#fff8ef;border:1px solid #f7d9b8;border-radius:12px;padding:12px 16px;margin:12px 0 0}
+.tip b:first-child{color:var(--orange)}
+/* editor da semana */
+.wk{display:flex;flex-direction:column;gap:8px}
+.day{display:grid;grid-template-columns:96px 150px 1fr 1fr 1fr 92px;gap:10px;align-items:end;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:#FBF9FF}
+.day.off{background:#f1f3f7}
+.day .dn{font-weight:800;align-self:center}
+.day label{display:flex;flex-direction:column;gap:3px;font-size:13px;font-weight:600;color:#5B5675}
+.day input,.day select{padding:9px 10px;border:1px solid #D6CBF2;border-radius:8px;background:#fff;min-height:44px;width:100%;color:var(--ink)}
+.day .net{align-self:center;font-weight:800;text-align:right}
+.day.off .net{color:var(--muted);font-weight:600}
+.day.off .t{visibility:hidden}
+.day .rep{grid-column:1/-1;display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:8px;border-top:1px dashed #D6CBF2;font-size:14px;font-weight:600;color:#5B21B6}
+.day .rep .muted{font-weight:400}
+.rep-ok{margin:0 0 10px}
+.seg{display:flex;border:1px solid #CBBDF0;border-radius:10px;overflow:hidden;min-height:44px}
+.seg button{flex:1;border:0;background:#fff;color:#5B21B6;font-weight:700;padding:6px 8px}
+.seg button[aria-pressed=true]{background:var(--blue);color:#fff}
+.sum{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.pill{background:#F5F1FF;border:1px solid var(--line);border-radius:12px;padding:10px 14px}
+.pill b{display:block;font-size:22px;color:var(--blue)}
+.pill span{font-size:13px;color:var(--muted)}
+/* alertas */
+.alert{padding:11px 14px;border-radius:10px;margin-top:8px;border:1px solid}
+.alert strong{display:block}
+.alert p{margin:2px 0 0;font-size:15px}
+.alert.ok{background:#eaf9f1;border-color:#c7e7d3}
+.alert.bad{background:#fff0f0;border-color:#f4c4c7}
+.alert.warn{background:#fff9eb;border-color:#f5e0ab}
+.alert.info{background:#f3f6fa;border-color:#dfe5ee}
+/* escolhas grandes */
+.choices{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.choice{text-align:left;border:2px solid #CBBDF0;background:#fff;border-radius:14px;padding:16px;min-height:44px}
+.choice b{display:block;font-size:18px;color:#2E1065;margin-bottom:4px}
+.choice[aria-pressed=true]{border-color:var(--orange);background:#F5F0FF;box-shadow:0 0 0 3px #DDD0FB}
+.opts{display:flex;flex-direction:column;gap:14px}
+.opt{border:2px solid #DDD3F5;border-radius:14px;padding:14px 16px;background:#fff;cursor:pointer}
+.opt.sel{border-color:var(--orange);background:#F5F0FF;box-shadow:0 0 0 3px #DDD0FB}
+.opt-h{display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:space-between}
+.opt-h h3{margin:0;font-size:18px;color:#2E1065}
+.opt-h h3 small{display:block;font-size:13px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.04em}
+.opt-why{margin:4px 0 10px;color:var(--muted);font-size:14.5px}
+.opt .pick{min-height:44px;padding:8px 16px;border-radius:10px;border:2px solid var(--blue);background:#fff;color:var(--blue);font-weight:800}
+.opt.sel .pick{background:var(--orange);border-color:var(--orange);color:#fff}
+.wkv{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.wkv div{border:1px solid #D6CBF2;border-radius:10px;background:#F3EEFF;padding:8px 6px;text-align:center;font-size:14px;line-height:1.35}
+.wkv div b{display:block;font-size:13px;text-transform:uppercase;color:#2E1065;letter-spacing:.03em}
+.wkv div .hr{display:block;font-weight:800;color:#2E1065;font-size:15px}
+.wkv div .lu{display:block;color:var(--muted);font-size:12.5px}
+.wkv div .nt{display:inline-block;margin-top:4px;font-weight:800;color:var(--blue);background:#fff;border-radius:99px;padding:0 8px}
+.wkv div.long .nt{background:#fff1c9;color:#7a5600}
+.wkv div.f{background:#eceef2;border-style:dashed;color:var(--muted)}
+.wkv div.f .hr{color:var(--muted);font-weight:700}
+.opt-f{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin-top:10px;font-size:14.5px}
+.opt-f .tt{font-weight:800;color:var(--blue);font-size:16px}
+.opt-f .w{color:#7a5600}
+.badge{display:inline-block;font-size:12.5px;font-weight:700;border-radius:99px;padding:2px 9px;margin:2px 4px 0 0}
+.badge.ok{background:#dcf7e8;color:#08713f}.badge.warn{background:#fff1c9;color:#7a5600}.badge.bad{background:#ffe1e3;color:#a1182a}
+.check40{display:flex;gap:10px;align-items:center;margin:0 0 12px;font-weight:600;min-height:44px}
+.check40 input{width:22px;height:22px;accent-color:var(--orange)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:6px 0 10px}
+.tabs button{border:1px solid #CBBDF0;background:#fff;border-radius:99px;padding:8px 14px;font-weight:700;color:#5B21B6;min-height:44px}
+.tabs button[aria-selected=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+details.adj{border:1px solid var(--line);border-radius:12px;margin-top:14px;background:#fff}
+details.adj summary{padding:12px 16px;font-weight:700;cursor:pointer;min-height:44px;display:flex;align-items:center}
+details.adj>div{padding:0 16px 16px}
+/* equipe */
+.ppl{display:flex;flex-direction:column;gap:8px}
+.prow{display:grid;grid-template-columns:1fr 260px 48px;gap:8px;align-items:end}
+.prow label{display:flex;flex-direction:column;gap:3px;font-size:13px;font-weight:600;color:#5B5675}
+.prow input,.prow select{padding:9px 10px;border:1px solid #D6CBF2;border-radius:8px;min-height:44px;width:100%}
+.del{min-height:44px;border:1px solid #f0c2c6;background:#fff;color:#a1182a;border-radius:8px;font-weight:800}
+.cover{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:8px}
+.cover div{text-align:center;background:#F5F1FF;border:1px solid var(--line);border-radius:10px;padding:8px 2px;font-size:13px}
+.cover b{display:block;font-size:20px;color:var(--blue)}
+.cover div.zero{background:#fff0f0;border-color:#f4c4c7}.cover div.zero b{color:#a1182a}
+/* resultado */
+.cmp{width:100%;border-collapse:collapse;font-size:15px}
+.cmp th,.cmp td{padding:9px 8px;border-bottom:1px solid #EAE4F8;text-align:left;vertical-align:top}
+.cmp thead th{background:#F3EFFE;font-size:14px}
+.cmp tfoot td{font-weight:800}
+.cmp .f{color:var(--muted)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:10px;-webkit-overflow-scrolling:touch}
+.cal{border-collapse:collapse;min-width:max-content}
+.cal th{background:var(--navy);color:#fff;font-size:12px;font-weight:600;padding:6px 3px;min-width:40px;line-height:1.2}
+.cal th.sun{background:#943642}
+.cal th.who,.cal td.who{position:sticky;left:0;z-index:1;text-align:left;min-width:120px;max-width:160px;padding:6px 10px}
+.cal td.who{background:#fff;font-weight:600;font-size:14px}
+.cal td.who small{display:block;font-weight:500;color:var(--muted);font-size:11.5px}
+.cal td{border:1px solid #E6DFF7;text-align:center;padding:3px}
+.tag{display:inline-grid;place-items:center;min-width:34px;min-height:32px;border-radius:7px;font-weight:800;font-size:12px}
+.tag.T{background:#dcf7e8;color:#08713f}
+.tag.F{background:#edf1f7;color:#5d6980}
+.tag.old{outline:2px dashed #e2b26b;outline-offset:-2px}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:14px;margin:10px 0 0;align-items:center}
+.legend span{display:flex;align-items:center;gap:6px}
+.monthsel{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.monthsel select{padding:9px 10px;border:1px solid #D6CBF2;border-radius:8px;min-height:44px}
+.nav{display:flex;gap:10px;align-items:center;margin-top:6px}
+.btn{min-height:48px;padding:10px 22px;border-radius:10px;font-weight:700;border:1px solid var(--blue);background:var(--blue);color:#fff;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none}
+.btn.next{background:#FFD400;border-color:#FFD400;color:var(--navy);margin-left:auto}
+.btn.next:hover{background:#FFC300}
+.btn.sec{background:#fff;color:#5B21B6;border-color:#CBBDF0}
+.btn.small{min-height:44px;padding:8px 14px}
+.btn[hidden]{display:none}
+.err{color:#a1182a;font-weight:700;margin:8px 0 0}
+:focus-visible{outline:3px solid #A78BFA;outline-offset:2px}
+details.glos{background:#fff;border:1px solid var(--line);border-radius:14px;margin-top:22px}
+details.glos summary{padding:14px 18px;font-weight:700;cursor:pointer;min-height:48px;display:flex;align-items:center}
+details.glos dl{margin:0;padding:0 18px 14px}
+details.glos dt{font-weight:700;margin-top:10px;color:#2E1065}
+details.glos dd{margin:2px 0 0}
+footer{max-width:1040px;margin:auto;padding:0 16px 30px;font-size:13px;color:var(--muted)}
+/* acesso */
+body.locked main,body.locked footer{display:none}
+#gate{display:none;max-width:520px;margin:40px auto;padding:0 16px}
+body.locked #gate{display:block}
+#gate .card{padding:26px}
+#gate label{display:block;font-weight:700;margin:14px 0 6px}
+#gate input{width:100%;min-height:52px;padding:10px 14px;border:2px solid #D6CBF2;border-radius:10px;font-size:20px;letter-spacing:.08em;text-transform:uppercase;font-family:ui-monospace,Consolas,monospace}
+#gate input:focus{border-color:var(--blue)}
+#gate .btn{width:100%;margin-top:14px}
+#gate .buy{display:block;text-align:center;margin-top:16px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.printonly{display:none}
+@media (max-width:760px){
+  .wkv{grid-template-columns:1fr}
+  .wkv div{display:grid;grid-template-columns:64px 1fr auto;align-items:center;text-align:left;gap:6px;padding:7px 10px}
+  .wkv div .nt{margin:0}
+  .opt .pick{width:100%}
+  body{font-size:15px}
+  .brand strong{font-size:18px}.brand span{font-size:13px}.logo{width:48px;height:40px}
+  h1{font-size:21px}
+  .lia{gap:14px}
+  .lia .guia{width:56px;height:56px}.lia .guia svg{width:30px;height:30px}
+  .bubble{font-size:15.5px;padding:12px 14px}
+  .card{padding:14px}
+  .day{grid-template-columns:1fr 1fr;gap:8px}
+  .day .dn{grid-column:1}.day .seg{grid-column:2}
+  .day .net{grid-column:1/-1;text-align:left}
+  .day.off .t{display:none}
+  .day label.t:nth-of-type(3){grid-column:1/-1}
+  .choices{grid-template-columns:1fr}
+  .prow{grid-template-columns:1fr 48px}.prow label.team{grid-column:1/-1;order:3}
+  .cover{grid-template-columns:repeat(4,1fr)}
+  .nav .btn{flex:1;padding:10px 12px}
+}
+@media print{
+  .top,.progress,.nav,.lia,details.glos,.noprint,footer .noprint{display:none!important}
+  body{background:#fff;font-size:12px}
+  .card{border:0;padding:0}
+  .printonly{display:block}
+  .scroll{overflow:visible;border:0}
+  .cal th{background:#ddd!important;color:#000;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .tag{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body class="locked">
+<header class="top"><div class="topin">
+  <a class="logo" href="./" aria-label="Virada 5x2: página inicial"><svg viewBox="0 0 48 48" aria-hidden="true"><rect width="48" height="48" rx="12" fill="#2E1065"/><path d="M14 27a10 10 0 0 1 17-8.5" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round"/><path d="M31.5 12.5v6.6h-6.6" fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/><text x="24" y="40" text-anchor="middle" font-family="system-ui,Segoe UI,Arial" font-size="11" font-weight="800" fill="#FFD400">5x2</text></svg></a>
+  <div class="brand"><strong>Virada 5x2</strong><span>Monte a nova escala da sua empresa, passo a passo</span></div>
+</div></header>
+
+<section id="gate" aria-labelledby="gateT">
+  <div class="card">
+    <h1 id="gateT">Digite seu código de acesso</h1>
+    <p class="muted">Você recebeu o código depois da compra. Ele fica guardado neste navegador: só precisa digitar uma vez em cada aparelho.</p>
+    <form id="gateF" novalidate>
+      <label for="gateC">Código de acesso</label>
+      <input id="gateC" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="VIRADA-XXXX-XXXX" maxlength="24" required>
+      <p class="err" id="gateE" role="alert"></p>
+      <button class="btn next" type="submit" style="margin-left:0">Entrar →</button>
+    </form>
+    <a class="buy" href="./#comprar">Ainda não tenho código: quero comprar</a>
+  </div>
+</section>
+
+<main>
+  <div class="progress" aria-hidden="true"><div class="bar"><i id="barFill"></i></div><span id="stepLabel"></span></div>
+  <div id="live" class="sr" aria-live="polite"></div>
+  <section id="screen" tabindex="-1"></section>
+  <p id="err" class="err" role="alert"></p>
+  <nav class="nav" aria-label="Navegação dos passos">
+    <button class="btn sec" id="back" type="button">← Voltar</button>
+    <button class="btn next" id="next" type="button">Próximo →</button>
+  </nav>
+
+  <details class="glos">
+    <summary>📖 Não entendeu uma palavra? Veja o glossário</summary>
+    <dl>
+      <dt>Escala de trabalho</dt><dd>O quadro que mostra quem trabalha em cada dia, em que horário e quem está de folga.</dd>
+      <dt>6x1 e 5x2</dt><dd>6x1: seis dias de trabalho e um de folga por semana. 5x2: cinco dias de trabalho e dois de folga.</dd>
+      <dt>Jornada</dt><dd>O tempo que a pessoa trabalha, sem contar o almoço. Pode ser contado por dia ou por semana.</dd>
+      <dt>Intervalo (almoço)</dt><dd>A pausa no meio do dia. Não conta como hora trabalhada.</dd>
+      <dt>Folga</dt><dd>Dia inteiro sem trabalho. A partir de 16/12/2026 são pelo menos 2 por semana.</dd>
+      <dt>Descanso entre um dia e outro</dt><dd>O tempo entre a saída de um dia e a entrada do dia seguinte: pelo menos 11 horas.</dd>
+      <dt>Turma</dt><dd>Um grupo de pessoas que folga nos mesmos dias. Com duas turmas, a empresa pode abrir no sábado e todos continuam com 2 folgas.</dd>
+      <dt>Acordo de compensação</dt><dd>Acordo, por escrito ou pela convenção coletiva, que permite trabalhar mais de 8 horas em alguns dias para compensar outros. Peça orientação ao seu contador.</dd>
+      <dt>Convenção coletiva</dt><dd>Acordo entre o sindicato dos empregados e o das empresas de uma categoria. Pode ter regras próprias de horário, folgas e feriados.</dd>
+    </dl>
+  </details>
+</main>
+
+<footer>
+  Virada 5x2 • por rhcom.amanda • versão 1.0 • Licença de uso para uma empresa • Os dados ficam só neste navegador: nada é enviado e tudo some ao fechar a página. Análise orientativa, baseada na EC 141/2026 e na CLT; não é parecer jurídico. Confira também a convenção coletiva da sua categoria e os feriados com o seu contador.
+</footer>
+
+<script>
+// Código de acesso: VIRADA-XXXX-YYYY, em que YYYY é a assinatura de XXXX.
+// Proteção simples, de conveniência: impede o uso casual sem compra, não um bloqueio forte.
+(()=>{
+const SALT='0dcd3958f0f9b7892f10b979',ALPH='ABCDEFGHJKLMNPQRSTUVWXYZ23456789',KEY='virada5x2.acesso';
+const norm=v=>String(v||'').toUpperCase().replace(/[^A-Z0-9]/g,'').replace(/^VIRADA/,'');
+async function valid(v){const c=norm(v);if(c.length!==8||[...c].some(x=>!ALPH.includes(x)))return false;
+  try{const h=new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(SALT+'|'+c.slice(0,4))));
+    return [0,1,2,3].map(k=>ALPH[h[k]&31]).join('')===c.slice(4)}catch(e){return false}}
+const unlock=()=>{document.body.classList.remove('locked')};
+const get=()=>{try{return localStorage.getItem(KEY)}catch(e){return null}};
+const put=v=>{try{localStorage.setItem(KEY,v)}catch(e){}};
+const box=document.getElementById('gateC'),err=document.getElementById('gateE');
+const fromLink=/[#&]codigo=([^&]+)/.exec(location.hash);
+if(fromLink){box.value=decodeURIComponent(fromLink[1]);history.replaceState(null,'',location.pathname)}
+(async()=>{
+  if(await valid(get()))return unlock();
+  if(fromLink&&await valid(box.value)){put(norm(box.value));return unlock()}
+  box.focus();
+})();
+document.getElementById('gateF').onsubmit=async e=>{e.preventDefault();
+  if(!norm(box.value)){err.textContent='Digite o código que você recebeu.';return}
+  if(await valid(box.value)){put(norm(box.value));err.textContent='';unlock();window.scrollTo(0,0)}
+  else err.textContent='Código não reconhecido. Confira as letras e os números (sem a letra O nem o número 0, sem a letra I nem o número 1).';
+};
+})();
+</script>
+<script>
+(()=>{
+'use strict';
+const DN=['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'];
+const DS=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+const ORDER=[1,2,3,4,5,6,0];
+const MONTHS=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+// EC 141/2026: 42h e 2 folgas a partir de 16/12/2026; 40h a partir de 16/12/2027
+const D42=new Date(2026,11,16), D40=new Date(2027,11,16);
+const BREAKS=[[0,'Sem intervalo'],[15,'15 minutos'],[30,'30 minutos'],[60,'1 hora'],[90,'1 hora e meia'],[120,'2 horas']];
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const pad=n=>String(n).padStart(2,'0');
+const min=t=>{const m=/^(\d{2}):(\d{2})$/.exec(t||'');return m?+m[1]*60+ +m[2]:NaN};
+const hhmm=m=>`${pad(Math.floor(m/60)%24)}:${pad(m%60)}`;
+const fmt=m=>{m=Math.round(m);const h=Math.floor(m/60),r=m%60;return r?`${h}h${pad(r)}`:`${h}h`};
+const net=d=>d&&d.on?min(d.end)-min(d.start)-(+d.brk):0;
+const ok=d=>!d.on||(Number.isFinite(net(d))&&net(d)>0);
+const total=w=>w.reduce((s,d)=>s+(ok(d)?net(d):0),0);
+const offs=w=>w.filter(d=>!d.on).length;
+const day=(on,start,end,brk)=>({on,start,end,brk});
+const clone=w=>w.map(d=>({...d}));
+// intervalo mínimo da CLT art. 71: acima de 6h, 1h (até 2h); de 4h a 6h, 15 minutos
+const fromNet=(start,n,brk)=>{const b=n>360?(brk>=60&&brk<=120?brk:60):n>240?15:0;return day(true,start,hhmm(min(start)+n+b),b)};
+const brkLabel=b=>(BREAKS.find(x=>x[0]===+b)||[0,`${b} min`])[1];
+
+// ---------- estado ----------
+let step=0, sat=null, T=42, optIdx=0, editTeam='A', monthKey='2026-11';
+let today=[day(false,'08:00','17:00',60),...[1,2,3,4,5].map(()=>day(true,'08:00','17:00',60)),day(true,'08:00','12:00',0)];
+let teams={A:null,B:null};
+let people=[{name:'',team:'A'},{name:'',team:'A'}];
+let touched=false;
+
+// ---------- textos de resumo ----------
+const fh=t=>{const [h,m]=String(t).split(':');return `${+h}h${m==='00'?'':m}`};
+function describe(w){
+  const g=[];ORDER.forEach((i,k)=>{const d=w[i];if(!d.on)return;const key=`das ${fh(d.start)} às ${fh(d.end)}${+d.brk?`, ${brkLabel(d.brk).toLowerCase()} de almoço`:', sem intervalo'}`;const last=g[g.length-1];if(last&&last.key===key&&last.k===k-1){last.to=i;last.k=k;last.n++}else g.push({key,from:i,to:i,k,n:1})});
+  return g.map(x=>`${DN[x.from]}${x.n>1?(x.n>2?' a ':' e ')+DN[x.to].toLowerCase():''} ${x.key}`);
+}
+const offNames=w=>ORDER.filter(i=>!w[i].on).map(i=>DN[i].toLowerCase());
+const joinE=a=>a.length<2?a.join(''):a.slice(0,-1).join(', ')+' e '+a[a.length-1];
+
+// ---------- conferência ----------
+function check(w,lim){
+  const r=[],tot=total(w),o=offs(w);
+  const bad=ORDER.filter(i=>!ok(w[i]));
+  if(bad.length)r.push(['bad','Horário incompleto',`Confira entrada e saída de ${joinE(bad.map(i=>DN[i].toLowerCase()))}: a saída precisa ser depois da entrada.`]);
+  r.push(tot>lim*60?['bad',`Passa de ${lim} horas por semana`,`São ${fmt(tot)} por semana. O limite é ${lim} horas.`]:['ok',`Dentro do limite de ${lim} horas`,`São ${fmt(tot)} de trabalho por semana.`]);
+  r.push(o<2?['bad',o===1?'Só 1 folga por semana':'Nenhuma folga na semana','A partir de 16/12/2026 são pelo menos 2 folgas por semana.']:['ok',`${o} folgas por semana`,`Folga: ${joinE(offNames(w))}.`]);
+  const shortL=[],shortP=[],longB=[],long8=[];
+  ORDER.forEach(i=>{const d=w[i];if(!d.on||!ok(d))return;const n=net(d);
+    if(n>360&&+d.brk<60)shortL.push(i);else if(n>240&&n<=360&&+d.brk<15)shortP.push(i);
+    if(n>360&&+d.brk>120)longB.push(i);
+    if(n>480)long8.push(i)});
+  const dl=a=>joinE(a.map(i=>DN[i].toLowerCase())),DL=a=>{const t=dl(a);return t[0].toUpperCase()+t.slice(1)};
+  if(shortL.length)r.push(['bad','Almoço curto',`${DL(shortL)}: quem trabalha mais de 6 horas no dia precisa de pelo menos 1 hora de intervalo.`]);
+  if(shortP.length)r.push(['bad','Pausa curta',`${DL(shortP)}: de 4 a 6 horas de trabalho, a pausa mínima é de 15 minutos.`]);
+  if(longB.length)r.push(['warn','Intervalo acima de 2 horas',`${DL(longB)}: intervalo maior que 2 horas depende de acordo escrito ou convenção coletiva.`]);
+  if(!shortL.length&&!shortP.length&&ORDER.some(i=>w[i].on))r.push(['ok','Intervalos corretos','O tempo de almoço ou pausa respeita o mínimo em todos os dias.']);
+  const rest=[];ORDER.forEach(i=>{const a=w[i],b=w[(i+1)%7];if(a.on&&b.on&&ok(a)&&ok(b)&&1440-min(a.end)+min(b.start)<660)rest.push(i)});
+  if(rest.length)r.push(['bad','Pouco descanso entre um dia e outro',`Depois de ${dl(rest)}: entre a saída de um dia e a entrada do dia seguinte são necessárias pelo menos 11 horas.`]);
+  if(long8.length)r.push(['warn','Dias com mais de 8 horas',`${DL(long8)}: trabalhar mais de 8 horas no dia exige acordo de compensação de horas ou convenção coletiva. Fale com o seu contador.`]);
+  return r;
+}
+const alertsHTML=r=>r.map(([c,t,p])=>`<div class="alert ${c}"><strong>${c==='ok'?'✅':c==='bad'?'⚠️':c==='warn'?'⚠️':'ℹ️'} ${esc(t)}</strong><p>${esc(p)}</p></div>`).join('');
+
+// ---------- opções de 5x2 ----------
+const POS={A:[1,2,3,4,5],B:[2,3,4,5,6]};
+function buildOptions(lim){
+  const L=lim*60,ref=ORDER.map(i=>today[i]).find(d=>d.on&&ok(d))||day(true,'08:00','17:00',60),start=ref.start,brk=+ref.brk;
+  const list=[];
+  const mk=(title,why,nets,starts,brks)=>{
+    const mkTeam=t=>{const w=[0,1,2,3,4,5,6].map(()=>day(false,start,start,0));for(let k=0;k<5;k++){const n=nets[k];if(!(n>0))return null;const s0=starts?starts[k]:start;const d=fromNet(s0,n,brks?brks[k]:brk);if(min(s0)+n+d.brk>=1440)return null;w[POS[t][k]]=d}return w};
+    const A=mkTeam('A'),B=mkTeam('B');if(!A||!B)return;
+    const sig=JSON.stringify(A);if(list.some(o=>JSON.stringify(o.A)===sig))return;
+    list.push({title,why,A,B});
+  };
+  const wk=[1,2,3,4,5],monFri=wk.every(i=>today[i].on&&ok(today[i])),tot=monFri?wk.reduce((s,i)=>s+net(today[i]),0):0;
+  if(monFri&&tot<=L)mk(sat?'Mesmo horário de hoje, em 5 dias':'Igual a hoje, sem o sábado',sat?'Cada turma trabalha 5 dias com o mesmo horário de hoje de segunda a sexta.':'Segunda a sexta continuam como hoje; só o trabalho do sábado deixa de existir.',wk.map(i=>net(today[i])),wk.map(i=>today[i].start),wk.map(i=>+today[i].brk));
+  const ex=Math.floor(L/5);mk('Mesmo horário todos os dias','As horas da semana divididas igualmente pelos 5 dias.',[ex,ex,ex,ex,ex]);
+  const x=Math.floor((L+60)/5);mk('Último dia mais curto','Os 4 primeiros dias um pouco mais longos e o último dia 1 hora mais curto.',[x,x,x,x,x-60]);
+  const y=Math.floor((L-240)/4);mk('Último dia meio período','Os 4 primeiros dias mais longos e o último dia com 4 horas.',[y,y,y,y,240]);
+  if(monFri&&tot>L){const last=net(today[5])-(tot-L);if(last>=120)mk('Reduz só no último dia','Os outros dias continuam como hoje; o último dia fica mais curto.',[...[1,2,3,4].map(i=>net(today[i])),last],wk.map(i=>today[i].start),wk.map(i=>+today[i].brk))}
+  return list;
+}
+function badges(o){const w=o.A,tot=total(w),n8=ORDER.filter(i=>w[i].on&&net(w[i])>480).length,b=[];
+  b.push(tot<=T*60?['ok',`Até ${T}h por semana`]:['bad',`Acima de ${T}h`]);b.push(['ok','2 folgas']);
+  b.push(n8?['warn',`${n8} dia(s) com mais de 8h: precisa de acordo`]:['ok','Até 8h por dia']);return b}
+// semana desenhada dia a dia (segunda a domingo)
+const lunch=b=>+b===0?'sem intervalo':+b<60?`pausa de ${+b} min`:`almoço de ${fmt(+b)}`;
+const weekView=w=>ORDER.map(i=>{const d=w[i];
+  return d.on?`<div class="${net(d)>480?'long':''}"><b>${DS[i]}</b><span><span class="hr">${fh(d.start)} às ${fh(d.end)}</span><span class="lu">${lunch(d.brk)}</span></span><span class="nt">${fmt(net(d))}</span></div>`
+    :`<div class="f"><b>${DS[i]}</b><span class="hr">Folga</span><span></span></div>`}).join('');
+function applyOption(){const o=buildOptions(T)[optIdx];if(!o)return;teams={A:clone(o.A),B:clone(o.B)}}
+
+// ---------- editor da semana ----------
+// repetir: aparece no primeiro dia de trabalho e no último dia alterado
+const lastEdit={}, repMsg={};
+function weekEditor(w,id){
+  const first=ORDER.find(i=>w[i].on), shown=lastEdit[id]!=null&&w[lastEdit[id]].on?lastEdit[id]:first;
+  const rep=i=>{if(i!==shown||!ok(w[i]))return '';
+    const others=ORDER.filter(j=>j!==i&&w[j].on).length;
+    return `<div class="rep"><span>🔁 Repetir o horário de ${DN[i].toLowerCase()}:</span>${id==='edToday'?`<button type="button" class="btn sec small" data-rep="wk">De segunda a sexta</button>`:''}${others?`<button type="button" class="btn sec small" data-rep="all">Em todos os dias de trabalho</button>`:''}${id!=='edToday'&&!others?'<span class="muted">marque outros dias como “Trabalha” para repetir</span>':''}</div>`};
+  return `${repMsg[id]?`<div class="tip rep-ok" role="status">✅ ${esc(repMsg[id])}</div>`:''}<div class="wk" id="${id}">${ORDER.map(i=>{const d=w[i];return `<div class="day${d.on?'':' off'}" data-i="${i}">
+    <span class="dn">${DN[i]}</span>
+    <div class="seg" role="group" aria-label="${DN[i]}: trabalha?"><button type="button" data-on="1" aria-pressed="${d.on}">Trabalha</button><button type="button" data-on="0" aria-pressed="${!d.on}">Folga</button></div>
+    <label class="t">Entrada<input type="time" data-k="start" value="${esc(d.start)}" aria-label="Entrada de ${DN[i]}"></label>
+    <label class="t">Saída<input type="time" data-k="end" value="${esc(d.end)}" aria-label="Saída de ${DN[i]}"></label>
+    <label class="t">Almoço<select data-k="brk" aria-label="Almoço de ${DN[i]}">${BREAKS.map(([v,t])=>`<option value="${v}"${+d.brk===v?' selected':''}>${t}</option>`).join('')}${BREAKS.some(b=>b[0]===+d.brk)?'':`<option value="${d.brk}" selected>${d.brk} minutos</option>`}</select></label>
+    <span class="net">${d.on?(ok(d)?fmt(net(d)):'—'):'Folga'}</span>${rep(i)}</div>`}).join('')}</div>`;
+}
+function bindEditor(id,w,onChange){
+  const box=$(id);if(!box)return;
+  delete repMsg[id];
+  box.querySelectorAll('.day').forEach(row=>{const i=+row.dataset.i,d=w[i];
+    row.querySelectorAll('[data-on]').forEach(b=>b.onclick=()=>{d.on=b.dataset.on==='1';lastEdit[id]=i;touched=true;onChange(true)});
+    // ao digitar, só atualiza as horas do dia e os totais; a página é redesenhada quando a pessoa sai dos horários
+    row.querySelectorAll('[data-k]').forEach(el=>el.onchange=()=>{d[el.dataset.k]=el.dataset.k==='brk'?+el.value:el.value;lastEdit[id]=i;touched=true;dirty=true;
+      row.querySelector('.net').textContent=ok(d)?fmt(net(d)):'—';
+      const s=document.querySelector('.sum');if(s)s.outerHTML=pills(w);});
+    row.querySelectorAll('[data-rep]').forEach(b=>b.onclick=()=>{
+      const tgt=b.dataset.rep==='wk'?[1,2,3,4,5].filter(j=>j!==i):ORDER.filter(j=>j!==i&&w[j].on);
+      tgt.forEach(j=>{w[j]={...d,on:true}});
+      repMsg[id]=`Horário de ${DN[i].toLowerCase()} (${fh(d.start)} às ${fh(d.end)}, ${brkLabel(d.brk).toLowerCase()}${+d.brk?' de almoço':''}) repetido em ${joinE(tgt.map(j=>DN[j].toLowerCase()))}.`;
+      lastEdit[id]=i;touched=true;onChange(true);});
+  });
+  let dirty=false;
+  box.addEventListener('focusout',e=>{const to=e.relatedTarget;
+    if(!dirty||(to&&box.contains(to)))return;
+    dirty=false;
+    // um botão fora do editor (Próximo, opções, turmas) já redesenha a página ao ser clicado
+    if(to&&to.closest('button'))return;
+    onChange(false)});
+}
+const pills=(w)=>`<div class="sum"><div class="pill"><b>${fmt(total(w))}</b><span>por semana</span></div><div class="pill"><b>${offs(w)}</b><span>${offs(w)===1?'folga':'folgas'} por semana</span></div><div class="pill"><b>${7-offs(w)}</b><span>dias de trabalho</span></div></div>`;
+
+// um ícone de guia para cada passo
+const ICONS=['👋','🕘','📅','🧩','👥','🎉'];
+let liaShown=-1; // a entrada animada só acontece quando o passo muda
+const lia=t=>`<div class="lia${liaShown===step?' still':''}"><span class="guia" aria-hidden="true">${ICONS[step]||ICONS[0]}</span><div class="bubble"><span class="who">Dica</span>${t}</div></div>`;
+
+// ---------- passos ----------
+const STEPS=[
+{label:'Começo',render:()=>`
+  ${lia('Olá! Em <b>5 passos simples</b>, você monta a nova escala <b>5x2</b> da sua empresa. A ferramenta avisa se algo não estiver certo.')}
+  <div class="card">
+    <h1>O que mudou na lei</h1>
+    <ul>
+      <li><b>A partir de 16/12/2026:</b> no máximo <b>42 horas por semana</b> e <b>2 folgas por semana</b>. A escala 6x1 (seis dias de trabalho e uma folga) deixa de ser permitida.</li>
+      <li><b>A partir de 16/12/2027:</b> o limite cai para <b>40 horas por semana</b>.</li>
+      <li>A redução das horas <b>não pode diminuir o salário</b>.</li>
+    </ul>
+    <h2>Como funciona aqui</h2>
+    <ol>
+      <li>Você mostra <b>como é hoje</b> o horário da sua equipe.</li>
+      <li>Diz se a empresa vai <b>abrir aos sábados</b>.</li>
+      <li>Escolhe <b>como vai ficar</b> entre opções prontas.</li>
+      <li>Coloca o <b>nome das pessoas</b> (se quiser).</li>
+      <li>Vê a <b>nova escala do mês</b> e pode imprimir ou salvar em PDF.</li>
+    </ol>
+    <div class="tip"><b>Seus dados ficam com você.</b> Nada é enviado para a internet, e tudo some quando você fecha a página.</div>
+  </div>`},
+{label:'Passo 1 de 5 · Como é hoje',render:()=>`
+  ${lia('Mostre como sua equipe trabalha <b>hoje</b>. Já vem preenchido um exemplo comum de 6x1: segunda a sexta das 8h às 17h e sábado de manhã. <b>Troque para o seu horário.</b>')}
+  <div class="card">
+    <h1>Como é a escala hoje?</h1>
+    <p class="muted small">Para cada dia, diga se a equipe trabalha ou folga e o horário. <b>Dica:</b> preencha um dia e use o botão 🔁 <b>Repetir</b> para copiar o mesmo horário para os outros.</p>
+    ${weekEditor(today,'edToday')}
+    ${pills(today)}
+  </div>`,
+  bind:()=>bindEditor('edToday',today,()=>{teams={A:null,B:null};render()})},
+{label:'Passo 2 de 5 · Sábado',render:()=>`
+  ${lia('Na 5x2 cada pessoa trabalha 5 dias. Se a empresa precisa abrir no sábado, a equipe se divide em <b>duas turmas</b>, que folgam em dias diferentes.')}
+  <div class="card">
+    <h1>A empresa vai abrir aos sábados?</h1>
+    <div class="choices" role="group" aria-label="A empresa vai abrir aos sábados?">
+      <button type="button" class="choice" data-sat="0" aria-pressed="${sat===false}"><b>Não, fecha aos sábados</b>Todos trabalham de segunda a sexta e folgam no sábado e no domingo.</button>
+      <button type="button" class="choice" data-sat="1" aria-pressed="${sat===true}"><b>Sim, abre aos sábados</b>A equipe se divide em duas turmas:<br>• <b>Turma A</b> trabalha de segunda a sexta e folga sábado e domingo.<br>• <b>Turma B</b> trabalha de terça a sábado e folga domingo e segunda.</button>
+    </div>
+    ${sat===true?'<div class="tip"><b>Dica:</b> com duas turmas, a segunda-feira e o sábado ficam com menos gente. No passo 4 você vê quantas pessoas trabalham em cada dia.</div>':''}
+  </div>`,
+  bind:()=>document.querySelectorAll('[data-sat]').forEach(b=>b.onclick=()=>{sat=b.dataset.sat==='1';touched=true;if(!sat)people.forEach(p=>p.team='A');else people.forEach((p,k)=>p.team=k%2?'B':'A');render()}),
+  valid:()=>sat===null?'Escolha uma das duas respostas para continuar.':''},
+{label:'Passo 3 de 5 · Como vai ficar',render:()=>{
+  const opts=buildOptions(T);if(!teams.A){optIdx=Math.min(optIdx,Math.max(0,opts.length-1));applyOption()}
+  const tw=editTeam==='B'&&sat?'B':'A';
+  return `
+  ${lia('Escolha <b>uma opção</b>. Todas têm 5 dias de trabalho e 2 folgas. Depois, se quiser, ajuste os horários.')}
+  <div class="card">
+    <h1>Como vai ficar na 5x2?</h1>
+    <label class="check40"><input type="checkbox" id="t40" ${T===40?'checked':''}> Já quero me adiantar para as 40 horas (obrigatório a partir de 16/12/2027)</label>
+    <p class="muted small">Hoje: ${fmt(total(today))} por semana. As opções abaixo ficam dentro de ${T} horas.${sat?' Os horários valem para as duas turmas: a Turma B faz de terça a sábado o que a Turma A faz de segunda a sexta.':''}</p>
+    <div class="opts" role="group" aria-label="Opções de escala 5x2">${opts.map((o,k)=>{const sel=k===optIdx&&teams.A&&JSON.stringify(teams.A)===JSON.stringify(o.A),n8=ORDER.filter(i=>o.A[i].on&&net(o.A[i])>480).length;
+      return `<div class="opt${sel?' sel':''}" data-opt="${k}">
+      <div class="opt-h"><h3><small>Opção ${k+1}</small>${esc(o.title)}</h3><button type="button" class="pick" aria-pressed="${!!sel}">${sel?'✔ Opção escolhida':'Escolher esta opção'}</button></div>
+      <p class="opt-why">${esc(o.why)}</p>
+      <div class="wkv">${weekView(o.A)}</div>
+      <div class="opt-f"><span class="tt">Total: ${fmt(total(o.A))} por semana</span><span>Folgas: ${joinE(offNames(o.A))}</span>${n8?`<span class="w">⚠️ ${n8===1?'1 dia passa':`${n8} dias passam`} de 8 horas: precisa de acordo de compensação (fale com o seu contador)</span>`:'<span>✅ Nenhum dia passa de 8 horas</span>'}</div>
+    </div>`}).join('')||'<p>Não foi possível montar opções com o horário de hoje. Volte ao passo 1 e confira os horários.</p>'}</div>
+    <details class="adj"><summary>✏️ Quer ajustar os horários da opção escolhida?</summary><div>
+      ${sat?`<div class="tabs" role="tablist"><button type="button" role="tab" data-team="A" aria-selected="${tw==='A'}">Turma A (folga sáb. e dom.)</button><button type="button" role="tab" data-team="B" aria-selected="${tw==='B'}">Turma B (folga dom. e seg.)</button></div>`:''}
+      ${weekEditor(teams[tw],'edNew')}
+    </div></details>
+    <h3>Conferência da nova escala${sat?` · Turma ${tw}`:''}</h3>
+    ${pills(teams[tw])}
+    ${alertsHTML(check(teams[tw],T))}
+    ${alertsHTML([['info','Salário','A redução da jornada não pode diminuir o salário, inclusive pisos (EC 141, art. 2º).']])}
+  </div>`},
+  bind:()=>{
+    const tw=editTeam==='B'&&sat?'B':'A';
+    const keepOpen=()=>{const d=document.querySelector('details.adj');if(d)d.open=true};
+    $('t40').onchange=e=>{T=e.target.checked?40:42;teams={A:null,B:null};render()};
+    document.querySelectorAll('[data-opt]').forEach(b=>b.onclick=()=>{optIdx=+b.dataset.opt;applyOption();touched=true;render()});
+    document.querySelectorAll('[data-team]').forEach(b=>b.onclick=()=>{editTeam=b.dataset.team;render();keepOpen()});
+    bindEditor('edNew',teams[tw],()=>{render();keepOpen()});
+  },
+  valid:()=>teams.A?'':'Escolha uma opção para continuar.'},
+{label:'Passo 4 de 5 · Quem trabalha',render:()=>{
+  const cov=ORDER.map(i=>people.filter(p=>teams[sat?p.team:'A'][i].on).length);
+  return `
+  ${lia(`Agora coloque o <b>nome</b> de cada pessoa${sat?' e a <b>turma</b> dela':''}. Este passo é opcional: se preferir, clique em <b>Próximo</b>.`)}
+  <div class="card">
+    <h1>Quem trabalha na empresa?</h1>
+    <div class="ppl">${people.map((p,k)=>`<div class="prow">
+      <label>Nome<input data-p="${k}" data-k="name" value="${esc(p.name)}" placeholder="Pessoa ${k+1}" autocomplete="off"></label>
+      ${sat?`<label class="team">Turma<select data-p="${k}" data-k="team"><option value="A"${p.team==='A'?' selected':''}>Turma A — folga sábado e domingo</option><option value="B"${p.team==='B'?' selected':''}>Turma B — folga domingo e segunda</option></select></label>`:'<span></span>'}
+      <button type="button" class="del" data-del="${k}" aria-label="Remover ${esc(p.name||`pessoa ${k+1}`)}" ${people.length<2?'disabled':''}>✕</button></div>`).join('')}</div>
+    <p><button type="button" class="btn sec small" id="addP">+ Adicionar pessoa</button></p>
+    <h3>Quantas pessoas trabalham em cada dia</h3>
+    <div class="cover">${ORDER.map((i,k)=>`<div class="${cov[k]===0&&(i!==0)&&(i!==6||sat)?'zero':''}"><span>${DS[i]}</span><b>${cov[k]}</b></div>`).join('')}</div>
+    ${sat&&cov[5]===0?alertsHTML([['bad','Ninguém no sábado','Coloque pelo menos uma pessoa na Turma B para a empresa abrir no sábado.']]):''}
+  </div>`},
+  bind:()=>{
+    document.querySelectorAll('[data-p]').forEach(el=>{const p=people[+el.dataset.p];
+      if(el.dataset.k==='name')el.oninput=()=>{p.name=el.value;touched=true};
+      else el.onchange=()=>{p.team=el.value;render()}});
+    document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{people.splice(+b.dataset.del,1);render()});
+    $('addP').onclick=()=>{people.push({name:'',team:sat&&people.filter(p=>p.team==='B').length<people.filter(p=>p.team==='A').length?'B':'A'});render();const ins=document.querySelectorAll('[data-k=name]');ins[ins.length-1].focus()};
+  }},
+{label:'Passo 5 de 5 · A nova escala',render:()=>{
+  const [y,m]=monthKey.split('-').map(Number),n=new Date(y,m+1,0).getDate(),mStart=new Date(y,m,1),mEnd=new Date(y,m,n);
+  const lim=mStart>=D40?40:42;
+  const crosses=mStart<D42&&mEnd>=D42;
+  const who=people.map((p,k)=>({name:p.name.trim()||`Pessoa ${k+1}`,team:sat?p.team:'A'}));
+  const months=[];for(let k=0;k<14;k++){const d=new Date(2026,10+k,1);months.push(`${d.getFullYear()}-${d.getMonth()}`)}
+  let cal='<div class="scroll"><table class="cal"><caption class="sr">Escala do mês</caption><thead><tr><th class="who" scope="col">Pessoa</th>';
+  for(let d=1;d<=n;d++){const dw=new Date(y,m,d).getDay();cal+=`<th scope="col" class="${dw===0?'sun':''}">${pad(d)}<br>${DS[dw]}</th>`}
+  cal+='</tr></thead><tbody>';
+  for(const p of who){cal+=`<tr><td class="who">${esc(p.name)}${sat?`<small>Turma ${p.team}</small>`:''}</td>`;
+    for(let d=1;d<=n;d++){const dt=new Date(y,m,d),dw=dt.getDay(),old=dt<D42,w=old?today:teams[p.team],x=w[dw];
+      cal+=`<td>${x.on?`<span class="tag T${old?' old':''}" title="${DN[dw]} ${pad(d)}: ${x.start} às ${x.end}${old?' (horário de hoje)':''}">${x.start.slice(0,2)}h</span>`:`<span class="tag F${old?' old':''}" title="Folga${old?' (horário de hoje)':''}">F</span>`}</td>`}
+    cal+='</tr>'}
+  cal+='</tbody></table></div>';
+  const cmpRows=ORDER.map(i=>{const cell=w=>w[i].on?`${w[i].start} às ${w[i].end}${+w[i].brk?` <span class="f">(${brkLabel(w[i].brk).toLowerCase()} de almoço)</span>`:''}`:'<span class="f">Folga</span>';return `<tr><th scope="row">${DN[i]}</th><td>${cell(today)}</td><td>${cell(teams.A)}</td>${sat?`<td>${cell(teams.B)}</td>`:''}</tr>`}).join('');
+  const r=check(teams.A,lim),rB=sat?check(teams.B,lim):[];
+  const late=mStart<D40&&total(teams.A)>40*60;
+  return `
+  ${lia('Pronto! 🎉 Esta é a sua nova escala. Confira os avisos e, se quiser, <b>imprima</b>, <b>salve em PDF</b> ou <b>baixe em Excel</b> para ajustar depois.')}
+  <div class="card">
+    <h1>Antes e depois</h1>
+    <div class="scroll" style="border:0"><table class="cmp"><thead><tr><th scope="col">Dia</th><th scope="col">Hoje (6x1)</th><th scope="col">${sat?'Nova · Turma A':'Nova escala (5x2)'}</th>${sat?'<th scope="col">Nova · Turma B</th>':''}</tr></thead>
+    <tbody>${cmpRows}</tbody>
+    <tfoot><tr><td>Total</td><td>${fmt(total(today))} · ${offs(today)} folga(s)</td><td>${fmt(total(teams.A))} · ${offs(teams.A)} folgas</td>${sat?`<td>${fmt(total(teams.B))} · ${offs(teams.B)} folgas</td>`:''}</tr></tfoot></table></div>
+  </div>
+  <div class="card">
+    <h2>Escala do mês</h2>
+    <div class="monthsel noprint"><label for="mSel"><b>Mês:</b></label><select id="mSel">${months.map(k=>{const [yy,mm]=k.split('-').map(Number);return `<option value="${k}"${k===monthKey?' selected':''}>${MONTHS[mm]} de ${yy}</option>`}).join('')}</select></div>
+    <p class="printonly"><b>${MONTHS[m]} de ${y}</b></p>
+    ${crosses?'<div class="tip" style="margin:0 0 10px"><b>Mês da mudança.</b> Até 15/12 vale o horário de hoje (dias com contorno tracejado). A partir de 16/12, a nova escala.</div>':''}
+    ${mEnd<D42?'<div class="tip" style="margin:0 0 10px"><b>Antes da mudança.</b> Neste mês ainda vale o horário de hoje. A nova escala começa em 16/12/2026.</div>':''}
+    ${cal}
+    <div class="legend"><span><span class="tag T">08h</span> Trabalha (hora de entrada)</span><span><span class="tag F">F</span> Folga</span>${mStart<D42?'<span><span class="tag T old">08h</span> Horário de hoje</span>':''}</div>
+    <p class="small muted">Feriados não aparecem aqui. Confira com o seu contador os feriados do mês (nacionais, do estado e da cidade).</p>
+  </div>
+  <div class="card">
+    <h2>Conferência</h2>
+    ${sat?'<h3>Turma A</h3>':''}${alertsHTML(r)}
+    ${sat?'<h3>Turma B</h3>'+alertsHTML(rB):''}
+    ${late?alertsHTML([['warn','Prepare-se para 2027',`A nova escala tem ${fmt(total(teams.A))} por semana. A partir de 16/12/2027 o limite cai para 40 horas.`]]):''}
+    ${alertsHTML([['info','Salário','A redução da jornada não pode diminuir o salário, inclusive pisos (EC 141, art. 2º).'],['info','Convenção coletiva','A convenção coletiva da sua categoria pode ter regras próprias. Leve esta escala ao seu contador antes de colocar em prática.']])}
+    <div class="nav noprint" style="margin-top:14px;flex-wrap:wrap"><button type="button" class="btn" id="print">🖨 Imprimir ou salvar em PDF</button><button type="button" class="btn" id="xls">📊 Baixar em Excel</button><button type="button" class="btn sec" id="restart">↺ Começar de novo</button></div>
+  </div>`},
+  bind:()=>{
+    $('mSel').onchange=e=>{monthKey=e.target.value;render()};
+    $('print').onclick=()=>window.print();
+    $('xls').onclick=exportExcel;
+    $('restart').onclick=()=>{if(!confirm('Apagar tudo e começar de novo?'))return;location.reload()};
+  }}
+];
+
+// ---------- Excel (.xlsx gerado aqui mesmo, sem enviar nada) ----------
+const CRC=(()=>{const t=new Uint32Array(256);for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+const crc32=b=>{let c=0xFFFFFFFF;for(let i=0;i<b.length;i++)c=CRC[(c^b[i])&255]^(c>>>8);return (c^0xFFFFFFFF)>>>0};
+function zip(files){// files: [[nome, texto]] — zip sem compressão
+  const enc=new TextEncoder(),parts=[],central=[];let off=0;
+  const u16=v=>[v&255,(v>>8)&255],u32=v=>[v&255,(v>>8)&255,(v>>16)&255,(v>>>24)&255];
+  for(const [name,text] of files){const nb=enc.encode(name),data=enc.encode(text),c=crc32(data);
+    const head=[...u32(0x04034b50),...u16(20),...u16(0x0800),...u16(0),...u16(0),...u16(0x21),...u32(c),...u32(data.length),...u32(data.length),...u16(nb.length),...u16(0)];
+    parts.push(new Uint8Array(head),nb,data);
+    central.push(new Uint8Array([...u32(0x02014b50),...u16(20),...u16(20),...u16(0x0800),...u16(0),...u16(0),...u16(0x21),...u32(c),...u32(data.length),...u32(data.length),...u16(nb.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(off)]),nb);
+    off+=head.length+nb.length+data.length}
+  const cs=central.reduce((s,p)=>s+p.length,0);
+  return new Blob([...parts,...central,new Uint8Array([...u32(0x06054b50),...u16(0),...u16(0),...u16(files.length),...u16(files.length),...u32(cs),...u32(off),...u16(0)])],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
+}
+const xe=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const colName=n=>{let s='';n++;while(n){const r=(n-1)%26;s=String.fromCharCode(65+r)+s;n=Math.floor((n-1)/26)}return s};
+// Célula: texto simples, ou objeto {v (texto), f (fórmula), str (fórmula que devolve texto), n (número), s (estilo)}
+// Estilos: 1 título, 2 cabeçalho, 3 folga, 4 total, 5 hora editável, 6 texto editável, 7 horas calculadas,
+// 8 total de horas, 9 número editável, 10 texto com quebra, 11 célula do mês, 12 nota em itálico, 13 nome do bloco
+function cellXML(c,ref){
+  if(c==null||c==='')return '';
+  const o=typeof c==='object'?c:{v:c},s=o.s?` s="${o.s}"`:'';
+  if(o.f!=null)return `<c r="${ref}"${s}${o.str?' t="str"':''}><f>${xe(o.f)}</f></c>`;
+  if(o.n!=null)return `<c r="${ref}"${s}><v>${o.n}</v></c>`;
+  if(o.v==null||o.v==='')return o.s?`<c r="${ref}"${s}/>`:'';
+  return `<c r="${ref}" t="inlineStr"${s}><is><t xml:space="preserve">${xe(o.v)}</t></is></c>`;
+}
+function sheetXML(sh){
+  const {rows,widths,extra,freeze}=sh;
+  return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"${sh.first?' tabSelected="1"':''}>${freeze?`<pane xSplit="${freeze[0]}" ySplit="${freeze[1]}" topLeftCell="${colName(freeze[0])}${freeze[1]+1}" activePane="bottomRight" state="frozen"/>`:''}</sheetView></sheetViews>${widths?`<cols>${widths.map((w,k)=>`<col min="${k+1}" max="${k+1}" width="${w}" customWidth="1"/>`).join('')}</cols>`:''}<sheetData>${rows.map((r,i)=>`<row r="${i+1}">${(r||[]).map((c,j)=>cellXML(c,`${colName(j)}${i+1}`)).join('')}</row>`).join('')}</sheetData>${extra||''}<pageMargins left="0.5" right="0.5" top="0.6" bottom="0.6" header="0.3" footer="0.3"/></worksheet>`;
+}
+function xlsx(sheets){// sheets: [{name, rows, widths, extra, freeze}]
+  const B='borderId="1" applyBorder="1"',Y='fillId="5" applyFill="1"';
+  const styles=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><styleSheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><numFmts count="2"><numFmt numFmtId="164" formatCode="hh:mm"/><numFmt numFmtId="165" formatCode="[h]:mm"/></numFmts><fonts count="5"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="14"/><color rgb="FF0B2954"/><name val="Calibri"/></font><font><i/><sz val="10"/><color rgb="FF5C6A82"/><name val="Calibri"/></font><font><b/><sz val="12"/><color rgb="FFC2410C"/><name val="Calibri"/></font></fonts><fills count="6"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill><fill><patternFill patternType="solid"><fgColor rgb="FFE5EDFF"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFECEEF2"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFFFF1E6"/></patternFill></fill><fill><patternFill patternType="solid"><fgColor rgb="FFFFF7C2"/></patternFill></fill></fills><borders count="2"><border/><border><left style="thin"><color rgb="FFCFDAEB"/></left><right style="thin"><color rgb="FFCFDAEB"/></right><top style="thin"><color rgb="FFCFDAEB"/></top><bottom style="thin"><color rgb="FFCFDAEB"/></bottom></border></borders><cellStyleXfs count="1"><xf/></cellStyleXfs><cellXfs count="14"><xf/><xf fontId="2" applyFont="1"/><xf fontId="1" fillId="2" ${B} applyFont="1" applyFill="1"><alignment horizontal="center" vertical="center" wrapText="1"/></xf><xf fillId="3" ${B} applyFill="1"><alignment horizontal="center"/></xf><xf fontId="1" fillId="4" ${B} applyFont="1" applyFill="1"/><xf numFmtId="164" ${Y} ${B} applyNumberFormat="1"><alignment horizontal="center"/></xf><xf ${Y} ${B}><alignment horizontal="center"/></xf><xf numFmtId="165" ${B} applyNumberFormat="1"><alignment horizontal="center"/></xf><xf numFmtId="165" fontId="1" fillId="4" ${B} applyNumberFormat="1" applyFont="1" applyFill="1"><alignment horizontal="center"/></xf><xf ${Y} ${B}><alignment horizontal="center"/></xf><xf ${B}><alignment vertical="top" wrapText="1"/></xf><xf ${B}><alignment horizontal="center"/></xf><xf fontId="3" applyFont="1"><alignment wrapText="1" vertical="top"/></xf><xf fontId="4" applyFont="1"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles><dxfs count="1"><dxf><font><color rgb="FF5C6A82"/></font><fill><patternFill patternType="solid"><bgColor rgb="FFECEEF2"/></patternFill></fill></dxf></dxfs></styleSheet>`;
+  return zip([
+    ['[Content_Types].xml',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/>${sheets.map((s,k)=>`<Override PartName="/xl/worksheets/sheet${k+1}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>`).join('')}</Types>`],
+    ['_rels/.rels','<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'],
+    ['xl/workbook.xml',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>${sheets.map((s,k)=>`<sheet name="${xe(s.name)}" sheetId="${k+1}" r:id="rId${k+1}"/>`).join('')}</sheets><calcPr calcId="191029" fullCalcOnLoad="1"/></workbook>`],
+    ['xl/_rels/workbook.xml.rels',`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">${sheets.map((s,k)=>`<Relationship Id="rId${k+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet${k+1}.xml"/>`).join('')}<Relationship Id="rId${sheets.length+1}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>`],
+    ['xl/styles.xml',styles],
+    ...sheets.map((s,k)=>[`xl/worksheets/sheet${k+1}.xml`,sheetXML({...s,first:k===0})])
+  ]);
+}
+function exportExcel(){
+  const [y,m]=monthKey.split('-').map(Number),n=new Date(y,m+1,0).getDate(),mStart=new Date(y,m,1);
+  const HS='Horários',Q=`'${HS}'!`,H=v=>({v,s:2}),tm=t=>({n:+(min(t)/1440).toFixed(10),s:5}),bk=b=>({n:+((+b)/1440).toFixed(10),s:5});
+  // ---- aba Horários: um bloco por escala (hoje, nova, turma B); só as células amarelas são para mudar ----
+  const blocks=[['Como é hoje (6x1)',today],[sat?'Nova escala 5x2 · Turma A (folga sábado e domingo)':'Nova escala 5x2',teams.A],...(sat?[['Nova escala 5x2 · Turma B (folga domingo e segunda)',teams.B]]:[])];
+  const rows=[[{v:'Horários da escala',s:1}],
+    [{v:'Mude só as células amarelas: Trabalha ou Folga, entrada, saída e almoço (digite as horas assim: 08:00). As horas do dia, os totais, a aba Conferência e a escala do mês se recalculam sozinhos.',s:12}],
+    ['Limite de horas por semana','',{n:mStart>=D40?40:T,s:9},{v:'42 horas a partir de 16/12/2026; 40 horas a partir de 16/12/2027.',s:12}],[]];
+  const LIM=`${Q}$C$3`,info=[],val=[];
+  blocks.forEach(([title,w])=>{
+    rows.push([{v:title,s:13}]);
+    rows.push([H('Dia'),H('Trabalha ou folga'),H('Entrada'),H('Saída'),H('Almoço'),H('Horas no dia')]);
+    const r0=rows.length+1;
+    ORDER.forEach((i,k)=>{const d=w[i],r=r0+k;
+      rows.push([DN[i],{v:d.on?'Trabalha':'Folga',s:6},d.on?tm(d.start):{s:5},d.on?tm(d.end):{s:5},d.on?bk(d.brk):{s:5},{f:`IF(B${r}="Folga","",MOD(D${r}-C${r},1)-E${r})`,s:7}])});
+    const r1=r0+6,rt=r1+1;
+    rows.push([{v:'Total da semana',s:4},{f:`COUNTIF(B${r0}:B${r1},"Folga")&IF(COUNTIF(B${r0}:B${r1},"Folga")=1," folga"," folgas")`,str:1,s:4},{v:'',s:4},{v:'',s:4},{v:'',s:4},{f:`SUM(F${r0}:F${r1})`,s:8}]);
+    rows.push([]);
+    val.push(`B${r0}:B${r1}`);
+    info.push({title,r0,r1,rt});
+  });
+  const extraH=`<dataValidations count="1"><dataValidation type="list" allowBlank="1" showErrorMessage="1" errorTitle="Valor inválido" error="Escolha Trabalha ou Folga." sqref="${val.join(' ')}"><formula1>"Trabalha,Folga"</formula1></dataValidation></dataValidations>`;
+  // ---- aba Conferência: fórmulas que olham a aba Horários ----
+  const conf=[[{v:'Conferência',s:1}],[{v:'Recalcula sozinha quando você muda a aba Horários.',s:12}],[]];
+  info.forEach(({title,r0,r1,rt})=>{
+    const B=`${Q}$B$${r0}:$B$${r1}`,C=`${Q}$C$${r0}:$C$${r1}`,D=`${Q}$D$${r0}:$D$${r1}`,E=`${Q}$E$${r0}:$E$${r1}`,W=`(${B}="Trabalha")`,NET=`(MOD(${D}-${C},1)-${E})`,eps='0.0001';
+    const nx=k=>r0+((k+1)%7),inter=ORDER.map((_,k)=>`(${Q}$B$${r0+k}="Trabalha")*(${Q}$B$${nx(k)}="Trabalha")*((1-${Q}$D$${r0+k}+${Q}$C$${nx(k)})<11/24-${eps})`).join('+');
+    conf.push([{v:title,s:13}]);
+    conf.push([H('Item'),H('Resultado')]);
+    const it=(t,f)=>conf.push([{v:t,s:10},{f,str:1,s:10}]);
+    it('Horas por semana',`IF(${Q}$F$${rt}*24>${LIM}+${eps},"⚠️ Passa de "&${LIM}&" horas: são "&TEXT(${Q}$F$${rt},"[h]:mm")&" por semana.","✅ Dentro do limite: "&TEXT(${Q}$F$${rt},"[h]:mm")&" por semana (limite de "&${LIM}&" horas).")`);
+    it('Folgas',`IF(COUNTIF(${B},"Folga")<2,"⚠️ Só "&COUNTIF(${B},"Folga")&IF(COUNTIF(${B},"Folga")=1," folga"," folgas")&": a partir de 16/12/2026 são pelo menos 2 por semana.","✅ "&COUNTIF(${B},"Folga")&" folgas por semana.")`);
+    it('Horário completo',`IF(SUMPRODUCT(${W}*(((${C}="")+(${D}="")+(${NET}<=0))>0))>0,"⚠️ Confira entrada e saída: há dia de trabalho sem horário ou com saída antes da entrada.","✅ Todos os dias de trabalho têm entrada e saída.")`);
+    it('Almoço',`IF(SUMPRODUCT(${W}*(${NET}>6/24+${eps})*(${E}<1/24-${eps}))>0,"⚠️ Almoço curto: quem trabalha mais de 6 horas no dia precisa de pelo menos 1 hora de intervalo.",IF(SUMPRODUCT(${W}*(${NET}>4/24+${eps})*(${NET}<=6/24+${eps})*(${E}<15/1440-${eps}))>0,"⚠️ Pausa curta: de 4 a 6 horas de trabalho, a pausa mínima é de 15 minutos.","✅ Intervalos corretos."))`);
+    it('Intervalo acima de 2 horas',`IF(SUMPRODUCT(${W}*(${E}>2/24+${eps}))>0,"⚠️ Há intervalo maior que 2 horas: depende de acordo escrito ou convenção coletiva.","✅ Nenhum intervalo passa de 2 horas.")`);
+    it('Descanso entre um dia e outro',`IF((${inter})>0,"⚠️ Entre a saída de um dia e a entrada do dia seguinte são necessárias pelo menos 11 horas.","✅ Pelo menos 11 horas de descanso entre os dias.")`);
+    it('Dias com mais de 8 horas',`IF(SUMPRODUCT(${W}*(${NET}>8/24+${eps}))>0,"⚠️ "&SUMPRODUCT(${W}*(${NET}>8/24+${eps}))&" dia(s) com mais de 8 horas: exige acordo de compensação de horas ou convenção coletiva. Fale com o seu contador.","✅ Nenhum dia passa de 8 horas.")`);
+    conf.push([]);
+  });
+  conf.push([{v:'Lembretes',s:13}]);
+  ['A redução da jornada não pode diminuir o salário, inclusive pisos (EC 141, art. 2º).','A convenção coletiva da sua categoria pode ter regras próprias. Leve esta escala ao seu contador antes de colocar em prática.','Feriados não aparecem na escala do mês. Confira com o seu contador os feriados nacionais, do estado e da cidade.','Análise orientativa, baseada na EC 141/2026 e na CLT; não é parecer jurídico.'].forEach(t=>conf.push([{v:t,s:10}]));
+  // ---- aba do mês: cada dia busca o horário na aba Horários ----
+  const who=people.map((p,k)=>({name:p.name.trim()||`Pessoa ${k+1}`,team:sat?p.team:'A'}));
+  const bi={hoje:info[0],A:info[1],B:info[2]||info[1]},c0=sat?2:1;
+  const mrows=[[{v:`Escala de ${MONTHS[m]} de ${y}`,s:1}],
+    [{v:(mStart<D42?'Até 15/12/2026 vale o horário de hoje; a partir de 16/12/2026, a nova escala. ':'')+'Cada dia mostra entrada e saída; F = folga. Para mudar os horários, altere a aba Horários. O nome'+(sat?' e a turma (A ou B)':'')+' podem ser mudados aqui.',s:12}],
+    [H('Pessoa'),...(sat?[H('Turma')]:[]),...Array.from({length:n},(_,k)=>H(`${pad(k+1)} ${DS[new Date(y,m,k+1).getDay()]}`))]];
+  who.forEach((p,pi)=>{const r=4+pi;
+    mrows.push([{v:p.name,s:6},...(sat?[{v:p.team,s:6}]:[]),...Array.from({length:n},(_,k)=>{const dt=new Date(y,m,k+1),off=ORDER.indexOf(dt.getDay());
+      const one=b=>`IF(${Q}$B$${b.r0+off}="Folga","F",TEXT(${Q}$C$${b.r0+off},"hh:mm")&"-"&TEXT(${Q}$D$${b.r0+off},"hh:mm"))`;
+      const f=dt<D42?one(bi.hoje):sat?`IF($B$${r}="B",${one(bi.B)},${one(bi.A)})`:one(bi.A);
+      return {f,str:1,s:11}})]);
+  });
+  const lastCol=colName(c0+n-1),lastRow=3+who.length;
+  const extraM=`<conditionalFormatting sqref="${colName(c0)}4:${lastCol}${lastRow}"><cfRule type="cellIs" dxfId="0" priority="1" operator="equal"><formula>"F"</formula></cfRule></conditionalFormatting>${sat?`<dataValidations count="1"><dataValidation type="list" allowBlank="1" showErrorMessage="1" errorTitle="Turma inválida" error="Escolha A ou B." sqref="B4:B${lastRow}"><formula1>"A,B"</formula1></dataValidation></dataValidations>`:''}`;
+  const blob=xlsx([
+    {name:HS,rows,widths:[30,18,11,11,11,14,60],extra:extraH},
+    {name:'Conferência',rows:conf,widths:[30,110]},
+    {name:`Escala ${MONTHS[m].slice(0,3)} ${y}`,rows:mrows,widths:[24,...(sat?[8]:[]),...Array(n).fill(12)],extra:extraM,freeze:[c0,3]}]);
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=`Virada5x2_Escala_${MONTHS[m]}_${y}.xlsx`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+}
+
+// ---------- navegação ----------
+// mês inicial: dezembro de 2026 (mês da mudança) ou o mês atual, se for depois
+(()=>{const now=new Date(),d=now<new Date(2026,11,1)?new Date(2026,11,1):now;monthKey=`${d.getFullYear()}-${d.getMonth()}`})();
+function render(){
+  const s=STEPS[step],y=window.scrollY,a=document.activeElement,aid=a&&a.closest('#screen')?(a.dataset.k&&a.dataset.p?`[data-p="${a.dataset.p}"][data-k="${a.dataset.k}"]`:a.id?`#${a.id}`:null):null;
+  $('screen').innerHTML=s.render();liaShown=step;
+  if(s.bind)s.bind();
+  $('stepLabel').textContent=s.label;
+  $('barFill').style.width=Math.round(step/(STEPS.length-1)*100)+'%';
+  $('back').hidden=step===0;
+  $('next').hidden=step===STEPS.length-1;
+  $('next').textContent=step===0?'Começar →':step===STEPS.length-2?'Ver a nova escala →':'Próximo →';
+  $('err').textContent='';
+  window.scrollTo(0,y);
+  if(aid){const el=document.querySelector(aid);if(el)el.focus({preventScroll:true})}
+}
+function go(n){
+  if(n>step){const v=STEPS[step].valid&&STEPS[step].valid();if(v){$('err').textContent=v;return}}
+  step=Math.max(0,Math.min(STEPS.length-1,n));render();
+  $('live').textContent=STEPS[step].label;
+  $('screen').focus({preventScroll:true});window.scrollTo({top:0,behavior:'smooth'});
+}
+$('next').onclick=()=>go(step+1);
+$('back').onclick=()=>go(step-1);
+window.addEventListener('beforeunload',e=>{if(touched){e.preventDefault();e.returnValue=''}});
+render();
+})();
+</script>
+</body>
+</html>
