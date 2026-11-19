@@ -95,6 +95,22 @@ section.alt{background:var(--bg)}
 .how li span{flex:none;width:34px;height:34px;border-radius:50%;background:var(--mint);color:var(--deep);display:grid;place-items:center;font-weight:800}
 .how li p{margin:0;color:var(--muted);font-size:15.5px}
 .how li b{color:var(--deep)}
+/* janela de compra */
+dialog.compra{border:0;border-radius:20px;padding:0;width:min(480px,calc(100% - 32px));max-height:calc(100% - 32px);box-shadow:0 24px 60px rgba(46,16,101,.35);color:var(--ink)}
+dialog.compra::backdrop{background:rgba(30,27,58,.55)}
+.compra form{padding:26px 24px 22px;display:grid;gap:14px}
+.compra .x{position:absolute;top:8px;right:8px;width:44px;height:44px;border:0;background:none;font-size:26px;color:var(--muted);cursor:pointer;border-radius:10px}
+.compra h2{font-size:24px;padding-right:36px}
+.compra p.sub{margin:0;color:var(--muted);font-size:15.5px}
+.compra label{display:grid;gap:4px;font-weight:700;color:var(--deep);font-size:15.5px}
+.compra label small{font-weight:400;color:var(--muted)}
+.compra input[type=text],.compra input[type=tel]{font:inherit;min-height:48px;padding:10px 12px;border:1.5px solid var(--line);border-radius:10px;color:var(--ink)}
+.compra input:focus{border-color:var(--teal);outline:none;box-shadow:0 0 0 3px #DCCBFF}
+.compra .ok{display:flex;gap:10px;align-items:flex-start;font-weight:400;color:var(--ink);font-size:14.5px}
+.compra .ok input{width:22px;height:22px;margin-top:2px;flex:none;accent-color:var(--teal)}
+.compra .err{margin:0;color:#B42318;font-size:14.5px;font-weight:600;min-height:0}
+.compra .btn{width:100%}
+.compra .fine{font-size:13.5px;color:var(--muted);margin:0;text-align:center}
 /* faq */
 .faq{max-width:800px}
 .faq details{border:1px solid var(--line);border-radius:14px;background:#fff;margin-bottom:10px}
@@ -152,7 +168,7 @@ footer a{color:#E9DDFF}
       <div class="cta">
         <a class="btn buy" href="#comprar" data-buy>Quero minha escala por R$ 7,49</a>
         <a class="btn ghost" href="#como-funciona">Ver como funciona</a>
-        <small>Pagamento único, sem mensalidade. Você recebe o código de acesso no WhatsApp depois da confirmação.</small>
+        <small>Pagamento único, sem mensalidade. Você informa seu nome e WhatsApp, paga e recebe o código de acesso no WhatsApp depois da confirmação.</small>
       </div>
     </div>
     <div class="demo" aria-label="Exemplo de antes e depois">
@@ -226,15 +242,15 @@ footer a{color:#E9DDFF}
         <li>Calendário do mês, PDF e Excel</li>
         <li>Use quantas vezes quiser</li>
       </ul>
-      <a class="btn buy" href="#" data-buy id="buyMain">Comprar agora</a>
-      <p class="fine" id="buyNote">Pagamento seguro pelo Mercado Pago. Direito de arrependimento em até 7 dias.</p>
-      <a class="btn ghost" href="https://docs.google.com/forms/d/e/1FAIpQLSdA7LLkD6810tF8RKctMgwwZHFtvg8Q-72BoFauGUVJnSM1aA/viewform" target="_blank" rel="noopener" style="width:100%;margin-top:12px">Já paguei: quero receber meu código</a>
+      <a class="btn buy" href="https://docs.google.com/forms/d/e/1FAIpQLSdA7LLkD6810tF8RKctMgwwZHFtvg8Q-72BoFauGUVJnSM1aA/viewform" data-buy id="buyMain">Comprar agora</a>
+      <p class="fine" id="buyNote">Você informa nome e WhatsApp e o Mercado Pago abre em seguida (Pix ou cartão). Direito de arrependimento em até 7 dias.</p>
+      <a class="btn ghost" href="https://mpago.la/33RgtAV" target="_blank" rel="noopener" style="width:100%;margin-top:12px">Já preenchi: ir para o pagamento</a>
     </div>
     <div>
-      <div class="head" style="margin-bottom:18px"><span class="eyebrow">Como comprar</span><h2 style="font-size:28px">Do pagamento à escala pronta</h2></div>
+      <div class="head" style="margin-bottom:18px"><span class="eyebrow">Como comprar</span><h2 style="font-size:28px">Do formulário à escala pronta</h2></div>
       <ol class="how">
-        <li><span>1</span><div><b>Pague pelo link</b><p>Pix ou cartão, na página do Mercado Pago.</p></div></li>
-        <li><span>2</span><div><b>Preencha o formulário</b><p>Depois de pagar, <a href="https://docs.google.com/forms/d/e/1FAIpQLSdA7LLkD6810tF8RKctMgwwZHFtvg8Q-72BoFauGUVJnSM1aA/viewform" target="_blank" rel="noopener">preencha o formulário</a> com seu nome e WhatsApp. Assim que o pagamento for confirmado, você recebe no WhatsApp o link com o seu código.</p></div></li>
+        <li><span>1</span><div><b>Preencha o formulário</b><p>Clique em <a href="#comprar" data-buy>Comprar agora</a> e informe seu nome e WhatsApp. É para esse número que o código vai.</p></div></li>
+        <li><span>2</span><div><b>Pague no Mercado Pago</b><p>Ao clicar em Ir para o pagamento, o Mercado Pago abre sozinho (Pix ou cartão). Assim que o pagamento for confirmado, você recebe no WhatsApp o link com o seu código.</p></div></li>
         <li><span>3</span><div><b>Entre e monte a escala</b><p>Clique em <a href="app.html">Já comprei</a>, digite o código e siga os 5 passos.</p></div></li>
       </ol>
     </div>
@@ -265,6 +281,21 @@ footer a{color:#E9DDFF}
 </section>
 </main>
 
+<dialog class="compra" id="compra" aria-labelledby="compraT">
+  <form id="compraForm" novalidate>
+    <button type="button" class="x" id="compraFechar" aria-label="Fechar">×</button>
+    <span class="eyebrow">Passo 1 de 2</span>
+    <h2 id="compraT">Para onde enviamos seu código?</h2>
+    <p class="sub">Preencha e clique em Ir para o pagamento. O Mercado Pago abre em seguida. Assim que o pagamento for confirmado, você recebe no WhatsApp o link com o seu código.</p>
+    <label>Nome completo<input type="text" id="cNome" autocomplete="name" required></label>
+    <label>WhatsApp com DDD<input type="tel" id="cZap" autocomplete="tel" inputmode="tel" placeholder="(11) 90000-0000" required></label>
+    <label>Nome de quem vai fazer o pagamento <small>se for outra pessoa (opcional)</small><input type="text" id="cPagador"></label>
+    <label class="ok"><input type="checkbox" id="cAut" required><span>Autorizo o uso do meu nome e WhatsApp apenas para receber o código de acesso e o suporte desta compra.</span></label>
+    <p class="err" id="cErro" role="alert"></p>
+    <button type="submit" class="btn buy" id="cIr">Ir para o pagamento</button>
+    <p class="fine">Pagamento único de R$ 7,49 pelo Mercado Pago (Pix ou cartão). Direito de arrependimento em até 7 dias.</p>
+  </form>
+</dialog>
 <footer>
   <div class="wrap">
     <div><b style="color:#fff">Virada 5x2</b> · por rhcom.amanda · <a href="app.html">Já comprei: entrar com meu código</a></div>
@@ -274,8 +305,9 @@ footer a{color:#E9DDFF}
 </footer>
 
 <script>
-// Link de pagamento: cole aqui o link do Mercado Pago, PagSeguro ou similar.
+// Comprar agora abre a janela de compra (nome e WhatsApp, gravados no Google Forms) e depois o Mercado Pago.
 const LINK_PAGAMENTO='https://mpago.la/33RgtAV';
+const LINK_COMPRA='https://docs.google.com/forms/d/e/1FAIpQLSdA7LLkD6810tF8RKctMgwwZHFtvg8Q-72BoFauGUVJnSM1aA/viewform';
 (()=>{
   // contagem regressiva até 16/12/2026 (fuso de Brasília)
   const now=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Sao_Paulo'}));
@@ -286,9 +318,37 @@ const LINK_PAGAMENTO='https://mpago.la/33RgtAV';
   else{const l40=Math.round((d40-t0)/864e5);days.textContent='Já vale';txt.textContent=l40>0?`a 5x2 · ${l40} dias para as 40 horas`:'a 5x2 com 40 horas';
     document.querySelector('.final h2').textContent='A 5x2 já vale. Deixe a escala da sua empresa em dia hoje.'}
   // botões de compra
-  const main=document.getElementById('buyMain');
-  if(LINK_PAGAMENTO){main.href=LINK_PAGAMENTO;main.target='_blank';main.rel='noopener'}
-  else{main.href='#comprar';main.onclick=e=>{e.preventDefault();document.getElementById('buyNote').textContent='O link de pagamento ainda não foi configurado.'}}
+  // sem janela (navegador antigo), os botões abrem o formulário Google
+  document.querySelectorAll('[data-buy]').forEach(b=>{b.href=LINK_COMPRA});
+  // janela de compra: grava no Google Forms e abre o Mercado Pago
+  const FORM_POST='https://docs.google.com/forms/d/e/1FAIpQLSdA7LLkD6810tF8RKctMgwwZHFtvg8Q-72BoFauGUVJnSM1aA/formResponse';
+  const AUTORIZACAO='Autorizo o uso do meu nome e WhatsApp apenas para receber o código de acesso e o suporte desta compra.';
+  const dlg=document.getElementById('compra'),fm=document.getElementById('compraForm'),erro=document.getElementById('cErro'),ir=document.getElementById('cIr');
+  if(dlg.showModal){
+    document.querySelectorAll('[data-buy]').forEach(b=>b.addEventListener('click',e=>{e.preventDefault();erro.textContent='';dlg.showModal();document.getElementById('cNome').focus()}));
+    document.getElementById('compraFechar').onclick=()=>dlg.close();
+    dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+  }
+  // ao voltar do Mercado Pago pelo botão Voltar, o botão volta ao normal
+  addEventListener('pageshow',()=>{ir.disabled=false;ir.textContent='Ir para o pagamento'});
+  fm.addEventListener('submit',async e=>{
+    e.preventDefault();
+    const nome=document.getElementById('cNome').value.trim(),zap=document.getElementById('cZap').value.trim(),pag=document.getElementById('cPagador').value.trim(),aut=document.getElementById('cAut').checked;
+    const dig=zap.replace(/\D/g,'');
+    if(nome.length<3){erro.textContent='Escreva seu nome completo.';return}
+    if(nome.includes('@')){erro.textContent='Aqui vai o seu nome, não o e-mail.';return}
+    if(dig.length<10||dig.length>13){erro.textContent='Confira o WhatsApp: DDD e número, por exemplo (11) 90000-0000.';return}
+    if(!aut){erro.textContent='Marque a autorização para recebermos seu contato.';return}
+    erro.textContent='';ir.disabled=true;ir.textContent='Abrindo o pagamento…';
+    const corpo=new URLSearchParams({'entry.1301415190':nome,'entry.2007088068':zap,'entry.319729796':pag,'entry.693245734':AUTORIZACAO});
+    try{
+      await Promise.race([fetch(FORM_POST,{method:'POST',mode:'no-cors',body:corpo}),new Promise((_,r)=>setTimeout(()=>r(new Error('tempo')),8000))]);
+      location.href=LINK_PAGAMENTO;
+    }catch(_){
+      ir.disabled=false;ir.textContent='Ir para o pagamento';
+      erro.textContent='Não conseguimos enviar seus dados. Confira a internet e tente de novo.';
+    }
+  });
 })();
 </script>
 </body>
